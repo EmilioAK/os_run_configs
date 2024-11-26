@@ -1,0 +1,22 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "name": "Docker Debug (Attach)",
+      "type": "cppdbg",
+      "request": "launch",
+      "program": "/workspace/sfs",
+      "args": ["-v", "-i", "/workspace/test.img", "/mnt"],
+      "stopAtEntry": false,
+      "cwd": "/workspace",
+      "environment": [],
+      "externalConsole": false,
+      "MIMode": "gdb",
+      "miDebuggerPath": "/usr/bin/gdb",
+      "setupCommands": [
+        { "text": "-enable-pretty-printing", "description": "Enable GDB pretty printing", "ignoreFailures": true }
+      ],
+      "preLaunchTask": "Build SFS"
+    }
+  ]
+}

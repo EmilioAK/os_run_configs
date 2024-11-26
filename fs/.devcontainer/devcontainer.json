@@ -1,0 +1,21 @@
+{
+  "name": "OS-fs",
+  "image": "os-dev-img:latest", // Replace with your Docker image name
+  "workspaceFolder": "/workspace", // Folder inside the container where your code will reside
+  "mounts": [
+    "source=${localWorkspaceFolder},target=/workspace,type=bind" // Reflect local files
+  ],
+  "settings": {
+    "terminal.integrated.defaultProfile.linux": "/bin/bash" // Set your shell
+  },
+  "extensions": [
+    "ms-vscode.cpptools", // C/C++ Extension
+    "ms-vscode.cmake-tools"
+  ],
+  "runArgs": [
+    "--privileged", // Grant privileged access
+    "--cap-add=SYS_ADMIN", // Add SYS_ADMIN capability
+    "--device=/dev/fuse", // Mount the FUSE device
+    "--security-opt", "apparmor:unconfined" // Disable AppArmor for the container
+  ]
+}
